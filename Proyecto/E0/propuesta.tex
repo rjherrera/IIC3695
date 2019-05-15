@@ -1,0 +1,171 @@
+% Paquetes varios:
+\documentclass[letterpaper, 12pt]{article}
+\usepackage[spanish, es-tabla]{babel} %%Paquete español para mac
+\usepackage[utf8]{inputenc} %% Para unicode
+\usepackage{graphicx} %% Para incluir figuras
+\usepackage{ifpdf}
+\DeclareGraphicsExtensions{.pdf}
+\usepackage{fullpage}
+\setcounter{totalnumber}{5}
+\renewcommand{\textfraction}{0.1}
+\usepackage[cmex10]{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\decimalpoint
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{empheq}
+\usepackage{dirtytalk}
+
+
+
+
+\hypersetup{colorlinks=false,bookmarksopen=true,linkbordercolor={1 1 1}}
+\newcommand{\rfigura}[1]{Fig.\ref{#1}} %% redefine las figuras
+\newcommand{\rtabla}[1]{Tabla \ref{#1}} %% redefine las tablas
+%\renewcommand\thesection{Parte \Roman{section}} %% redefine las secciones
+%\renewcommand\thesubsection{Problema \arabic{subsection}}  %% redefine las subsecciones
+\usepackage{enumerate} %% Paquete ara generar listas enumeradas
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% ENCABEZADO %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace*{-1cm}
+\includegraphics[width=2cm]{logo.pdf}
+\vspace*{-2cm}
+
+\hspace*{2cm}
+ \begin{tabular}{l}
+  {\ Pontificia Universidad Católica de Chile}\\
+  {\ Escuela de Ingeniería}\\
+  {\ IIC3695 Tópicos Avanzados en Inteligencia de Máquina 2019-1 }\\
+  {\  }\\
+ \end{tabular}
+ \hfill 
+\vspace*{-0.2cm}
+\begin{center}
+{\Large\bf Propuesta Proyecto Semestral}\\
+\vspace*{3mm}
+{14 de mayo de 2019}\\
+\vspace*{1mm}
+{\bf Raimundo Herrera - Manuel Vial }\\
+\vspace*{1mm}
+\end{center}
+\hrule\vspace*{2pt}\hrule
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% ENCABEZADO %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+%\tableofcontents
+%\newpage
+
+%\thispagestyle{empty}
+%\listoffigures
+%\listoftables
+
+%\newpage
+
+
+\section{Introducción}
+%Contexto, propuesta y motivacion.
+Existe un proyecto en ejecución de crianza de esturiones en Parral, región del Maule. Estos viven en piscinas con un sistema llamado \textit{de recirculación}, que opera reutilizando el agua luego de una limpieza de la misma con filtros.\\
+
+Para el correcto crecimiento y desarrollo de los peces, se requiere mantener el agua en buenas condiciones, razón por la cual, ésta debe ser monitoreada constantemente. Para ello, se miden una serie de parámetros que indican de forma directa o indirecta si las condiciones son óptimas para los peces.\\
+
+Algunos de estos parámetros deben mantenerse dentro de rango a toda costa, pues en caso contrario, la mortalidad puede ascender a razón de miles de peces. Tendría gran valor poder anticipar estos riesgos o mejor aún, evitarlos.\\
+
+Luego de 5 años de crianza, se está analizando la posibilidad de realizar el monitoreo de parámetros de forma automática en vez de manual como se hace actualmente. Esto implica la compra y mantención de una serie de sensores de alto costo. Por ello, el estudio de relaciones entre parámetros se hace tentador para evitar gastos innecesarios.\\
+
+Durante estos 5 años de operación, se han tomado datos de al menos 5 parámetros, 6 veces al día de forma continuada. Como éstos fueron tomados de forma manual, es altamente probable que tengan errores de distintos tipos.\\
+
+Con el paso de los años se ha hecho notoria la necesidad de incorporar nuevas mediciones. En la tabla [\ref{table:parameters}] se muestran los principales parámetros medidos actualmente. De acuerdo a lo significativo que sea cada parámetro se discriminará si utilizar únicamente aquellos de los que se tenga registro desde el primer año o aquellas mediciones más recientes pero con menos datos.\\
+
+\begin{table}[H]
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Parámetro} & \textbf{Unidad} & \textbf{Rango Equipo} & \textbf{Rango Cultivo} & \textbf{Óptimo} \\ \hline \hline
+Temperatura & \textordmasculine Celsius & 0 a 30 & 8 a 25 & 20 \\ \hline
+Oxígeno & mg/L & 0 a 60 & 5 a 9 & 9 \\ \hline
+Saturación & $\%$ & 0 a 600 & 90 & 90 \\ \hline
+Amonio ($NH_{4}$) & mg/L & 0 a 300 & \textless 3 & \textless 3 \\ \hline
+Nitrito ($NO_{2}$) & mg/L & 0 a 1.15 & \textless{}3 & \textless{}3 \\ \hline
+Nitrato ($NO_{3}$) & mg/L & 0 a 100 & 70 & 70 \\ \hline
+Alcalinidad ($CaCo_{3}$) & mg/L & 0 a 500 & \textgreater{}150 & \textgreater{}150 \\ \hline
+Dureza ($CaCo_{3}$) & mg/L & 0 a 250 & \textgreater{}70 & \textgreater{}70 \\ \hline
+pH & Unidad & 0 a 14 & 7 a 8 & 7 \\ \hline
+Potencial ORP & mV (mini Volt) & 0 a 300 & 250 & 250 \\ \hline
+Presión de gases totales & $\%$ & 0 a 600 & 100 & 100 \\ \hline
+Dióxido de Carbono ($CO_2$) & mg/L & 0 a 50 & 2 & 2 \\ \hline
+DBO & mg/L & 0 a 500 & \textless{}35 & 4 \\ \hline
+\end{tabular}
+\caption{Parámetros del agua con unidades y rangos}
+\label{table:parameters}
+\end{table}
+
+Los datos están disponibles y el permiso para su uso ya fue conseguido. Se espera en el transcurso de las siguientes semanas estudiar su forma y orden.\\
+
+\section{Marco Teórico}
+%Deben presentar los conceptos importantes y la teorıa en la que se basara el desarrollo y solucion del proyecte modelos aplican en su solucion, en que parte, como y por que (agregar referencias). No es necesario que entren en profundidad y total entendimiento, pero si deben comprender el dominio del trabajo propuesto.
+% Comentarios de Francisco:
+%- regresión lineal bayesiana
+%- procesos de regresión gaussiana? (gaussian process regression (dato freak: las tres palabras tienen doble s))
+
+Para el análisis de relaciones entre variables, se propone como método base el uso de regresión lineal bayesiana. Éste sería un punto de partida y serviría como comparación frente a métodos más sofisticados que pudieran entregar resultados más precisos en caso de éxito.\\
+
+Una de las particularidades de la regresión bayesiana es que puede utilizar alguno de los diversos métodos de \textit{sampling} que hemos revisado durante el curso para estimar la distribución de la posterior de los parámetros que se deseen obtener. En este caso en particular, la intención es utilizar métodos como \textit{Gibbs Sampling} \cite{gibbs} para alimentar la regresión. Lo anterior dado que procedimientos como éste permiten generar muestras aún cuando el dominio del problema sea de alta dimensionalidad, por medio de condicionamientos en otros parámetros, algo muy similar a lo que se pretende, dada la cantidad de parámetros con los que se cuenta.\\
+
+Por otra parte, una de las variantes a explorar del problema en cuestión, toma en cuenta estimar el comportamiento como series de tiempo de los parámetros medidos. Lo anterior con el objetivo de mitigar riesgos, prevenir muertes masivas de peces, etc. Se propone que para dicha predicción se utilicen procesos de regresión gaussianos \cite{gaussianmodels}, \cite{gaussianmodels2}. En línea con lo investigado hasta el momento, la utilización de métodos de Monte Carlo en cadenas de Markov, como el de Metropolis-Hastings aparecen como candidatos naturales para encontrar los parámetros de dichas series de tiempo.\\
+
+Dadas las características de los datos a nuestra disposición, una posibilidad a explorar es la de completar los datos faltantes por medio de alguno de los métodos estudiados. Como se explicó anteriormente, existe información desde el comienzo de las mediciones, sin embargo, con el tiempo se han agregado nuevos parámetros al conjunto de datos por lo que puede ser necesario estudiar las distribuciones y comportamiento de las mediciones por sí solas, para determinar si es posible ajustar distribuciones y generar datos para las muestras que no tengan ciertas mediciones.
+
+%Por otra parte, para la predicción usaremos procesos de regresión gaussianos. Intentaremos reconocer ciclos con modelos autoregresivos sobre la variable más importante, utilzando los demás como perturbaciones e intentando encontrar los parámetros con métodos como el de Metropolis-Hastings.
+
+\section{Conclusiones}
+%Se espera que mencionen cuales creen que podrıan ser sus resultados, principales limitaciones y dificultades del proyecto.
+
+Hay dos posibles resultados que podrían ser de gran utilidad:
+\begin{itemize}
+    \item encontrar alguna relación entre los  parámetros existentes, que permita no medir alguno de ellos.
+    \item encontrar ciclos o indicadores de que un parámetro relevante va a cambiar, para tomar por anticipado las medidas necesarias para evitar dicho cambio o paliar sus consecuencias.
+\end{itemize}
+
+Uno de los beneficios directos del primer resultado, como se comentó anteriormente, es que podría reducir significativamente los costos del proyecto de automatización en cuanto existen ciertas mediciones para las cuales se requiere incurrir en grandes gastos. Por ejemplo, si se lograra encontrar una forma robusta de obtener el valor de la concentración de nitritos en las piscinas usando los demás parámetros, se podría ahorrar mucho, dado que los sensores para dicha medición son muy costosos.\\
+
+En cuanto al segundo resultado, éste podría ayudar a disminuir la cantidad de muertes de peces por imprevistos. Actualmente si ciertos parámetros abandonan los rangos deseados, la cantidad de peces que mueren es del orden de miles.\\
+
+El análisis anterior muestra potenciales beneficios para la crianza de esturiones. No obstante, es importante señalar que este trabajo serviría también para el análisis comparativo de los modelos propuestos en cuanto a su utilidad predictiva en este marco en particular, y la eventual generalización de los mismos para aquellos problemas donde los datos tengan ciertas propiedades en común con éste.\\
+
+Una de las principales dificultades se relaciona con la limpieza de los datos obtenidos. Durante los 5 años de toma de datos, se hizo manualmente. Se espera que ciertas mediciones estén incompletas, con errores, o con valores poco fidedignos. El desafío es lograr obtener resultados significativos a pesar de esas dificultades.\\
+
+
+
+\begin{thebibliography}{3} %% Donde hay un 5, indicar el número de elementos que tendrá la bibliografía
+%% ¿Cómo se usa \bibitem{alias}? Donde dice alias, poner un sobrenombre al documento que después se puede usar a lo largo del texto para hacer referencia a éste.
+%% Para citar, hacer \cite{alias}
+%% \bibitem{nunez}F.~Nuñez, \emph{Experiencia 2: Identificación y LoopShaping}. Laboratorio de Control Automático IEE2683, Pontificia Universidad Católica de Chile, 2018.
+
+\bibitem{gibbs}A. Smith, G. Roberts. \emph{Bayesian computation via the Gibbs sampler and related Markov chain Monte Carlo methods}. J. Roy. Statist. Soc. Ser. B 55, 3-23.
+
+\bibitem{gaussianmodels}R. M. Neal. \emph{Monte Carlo implementation of Gaussian process models for Bayesian regression and classification}. Technical Report 9702, Dept. of Statistics, Univ. of Toronto, 1997. Available
+at https://arxiv.org/pdf/physics/9701026
+
+\bibitem{gaussianmodels2}C. Williams, D. Barber. \emph{Bayesian classification with Gaussian processes}. IEEE Transactions on Pattern Analysis and Machine Intelligence, 1998, vol. 20, no 12, p. 1342-1351.
+
+\end{thebibliography}
+
+%\section{Hojas de datos}
+%\includepdf[pages=-]{Hoja_datos.pdf}
+
+\end{document}
+
+% \begin{figure}[H]
+%      \centering
+%      \includegraphics{}
+%      \caption{``Ir y Venir'' con control P: comparación con experimento sin control}
+%      \label{fig:iv_p_2}
+%  \end{figure}{}
