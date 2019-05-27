@@ -1,0 +1,1 @@
+Se adjuntan el notebook y el .py que es descargado desde el notebook. No alcancé a borrar los comentarios pero debería correr.
